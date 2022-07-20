@@ -12,14 +12,15 @@ router.post('/createuser',[
     body('email','Enter a valid email').isEmail(),
     body('password','Password must be of atleast 5 character').isLength({min:5}),
 ],async (req,res)=>{
+  let success = false;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success,errors: errors.array() });
     }
     try{
     let user =await User.findOne({email: req.body.email});
     if(user){
-      return res.status(400).json({error: "Sorry a user with this email already exists"})
+      return res.status(400).json({success,error: "Sorry a user with this email already exists"})
     }
     const salt = await bcrypt.genSalt(10);
     const secPass = await bcrypt.hash(req.body.password,salt);
@@ -40,7 +41,8 @@ router.post('/createuser',[
       // .then(user => res.json(user)).catch(err=>{console.log(err)
       //   res.json({error: 'Please enter valid email'})});
       // res.json({"Nice":"nice"})
-      res.json({authtoken})
+      success = true;
+      res.json({success,authtoken})
     }
     catch(error){
       console.error(error.message);
@@ -53,16 +55,18 @@ router.post('/login',[
   body('password','Password must be there').exists(),
 ],async (req,res)=>{
 
-
+  let success = false;
 //Route 2: auth a user using /api/auth/login no login required
 const {email,password} = req.body;
 try {
   let user = await User.findOne({email});
   if(!user){
+    success = false;
     return res.status(400).json({error : "please try to login with correct credentials"});
   }
-  const passwordCompare = bcrypt.compare(password,user.password);
+  const passwordCompare = await bcrypt.compare(password,user.password);
   if(!passwordCompare){
+    success = false;
     return res.status(400).json({error : "please try to login with correct credentials"});
   }
   const data ={
@@ -71,7 +75,8 @@ try {
     }
   }
   const authtoken = jwt.sign(data, JWT_SECRET);
-  res.json({authtoken})
+  success = true;
+  res.json({success,authtoken})
 
 } catch(error){
   console.error(error.message);
