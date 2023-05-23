@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const NoteSchema = new Schema({
-    // this user help me out to find the notes associated with this user and in type it was like foreign key
+
+const NotesSchema = new Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'
@@ -12,7 +12,7 @@ const NoteSchema = new Schema({
     },
     description:{
         type: String,
-        required: true,
+        required: true, 
     },
     tag:{
         type: String,
@@ -21,6 +21,7 @@ const NoteSchema = new Schema({
     date:{
         type: Date,
         default: Date.now
-    }
+    },
   });
-  module.exports = mongoose.model('note',NoteSchema);
+
+  module.exports = mongoose.model('notes', NotesSchema);

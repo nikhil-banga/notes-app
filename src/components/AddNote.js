@@ -23,53 +23,76 @@ const AddNote = (props) => {
     setNote({ ...note, [e.target.name]: e.target.value });
   };
   return (
-    <div className="container my-3 ">
-      <h2>Add Notes</h2>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
-            Title
+    <>
+      <form className="container mx-auto ">
+        <p className="text-3xl font-semibold mb-4">Add Notes</p>
+        <div class="mb-6">
+          <label
+            htmlFor="email"
+            class="block mb-2 text-sm font-medium text-gray-900 "
+          >
+            Heading
           </label>
           <input
-            type="text" 
-            value = {note.title}
-            className="form-control"
+            type="text"
+            value={note.title}
             id="title"
             name="title"
             aria-describedby="emailHelp"
-            onChange={onChange}minLength={5} required
+            onChange={onChange}
+            minLength={5}
+            required
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="heading"
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="description" className="form-label">
-            Descritpion
+        <div class="mb-6">
+          <label
+            htmlFor="email"
+            class="block mb-2 text-sm font-medium text-gray-900 "
+          >
+            Description
           </label>
           <input
-            type="text" 
-            value = {note.description}
-            className="form-control"
+            type="text"
+            value={note.description}
             id="description"
             name="description"
-            onChange={onChange}minLength={5} required
+            onChange={onChange}
+            minLength={5}
+            required
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="description"
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="tag" className="form-label">
+        <div class="mb-6">
+          <label
+            htmlFor="email"
+            class="block mb-2 text-sm font-medium text-gray-900 "
+          >
             Tag
           </label>
           <input
-            type="text" 
-            value = {note.tag}
-            className="form-control"
+            type="text"
+            value={note.tag}
             id="tag"
             name="tag"
             onChange={onChange}
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="tag"
           />
         </div>
-        <button disabled ={note.title.length<5 || note.description.length<5}type="submit" className="btn btn-primary" onClick ={handleClick}> Add Note
+
+        <button
+          disabled={note.title.length < 5 || note.description.length < 5}
+          type="submit"
+          onClick={handleClick}
+          class="inline-flex items-center py-2 px-4 mt-4 md:mt-0 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  text-center mr-2 mb-2"
+        >
+          Add Note  
         </button>
       </form>
-    </div>
+    </>
   );
 };
 

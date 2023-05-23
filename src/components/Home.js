@@ -8,7 +8,7 @@ export const Home = (props) => {
   // const {notes,setNotes}=context;
   return (
 
-    <div>
+    <div className="container mx-auto p-8">
 
       {/* <AddNote/> */}
       <Notes showAlert={props.showAlert}/>

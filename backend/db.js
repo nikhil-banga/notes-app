@@ -1,11 +1,13 @@
-const mongoose = require ('mongoose');
-// const mongoURI = "mongodb://localhost:27017/iNotebook"
-// password = qLEf3z7EeVj8pm6E
-const mongoURI = "mongodb+srv://admin-iNoteBook:qLEf3z7EeVj8pm6E@cluster0.ixsftuj.mongodb.net/?retryWrites=true&w=majority"
+const mongoose = require("mongoose");
 
-const connectToMongo = ()=>{
-    mongoose.connect(mongoURI,()=>{
-        console.log("Connected to Mongo Successfully ");
-    })
-}
+const mongoURI =
+  "mongodb://127.0.0.1:27017/inotebook";
+  // "mongodb://127.0.0.1:27017/inotebook?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
+
+const connectToMongo = async() => {
+  await mongoose.connect(mongoURI, () => {
+    console.log("Connected to Mongo Successfully");
+  });
+};
+
 module.exports = connectToMongo;

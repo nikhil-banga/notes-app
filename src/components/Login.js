@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  
     const [cred, setCred] = useState({email: "",password:""})
     let Navigate = useNavigate();
     const handleSubmit= async (e)=>{
@@ -9,7 +10,10 @@ const Login = (props) => {
         
         
         // fetch("http://localhost:5000/api/auth/login")
-        const respose = await fetch(
+        // const respose = await fetch(
+        //   "https://inotebookbynikhil.herokuapp.com/api/auth/login",
+        //   {
+          const respose = await fetch(
             "http://localhost:5000/api/auth/login",
             {
                 method: "POST",
@@ -37,39 +41,54 @@ const Login = (props) => {
             setCred({...cred, [e.target.name]: e.target.value})
         }
   return (
-    <form  onSubmit={handleSubmit}>
-      <h3>Login Here</h3>
-      
-      <div className="form-group mt-3 mb-3">
-        <label htmlFor="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          name="email"
-          aria-describedby="emailHelp"
-          value={cred.email}
-          placeholder="Enter email"
-          onChange={onChange}
-        />
-        
-      </div>
-      <div className="form-group mb-3">
-        <label htmlFor="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          name="password"
-          value={cred.password}
-          placeholder="Password"
-          onChange={onChange}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary" >
-        Submit
-      </button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="container mx-auto p-8">
+        <p className="text-3xl font-semibold mb-4">Login Here</p>
+        <div class="mb-6">
+          <label
+            htmlFor="email"
+            class="block mb-2 text-sm font-medium text-gray-900 "
+          >
+            Your email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="nikhil@aapkenotes.com"
+            value={cred.email}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div class="mb-6">
+          <label
+            htmlFor="password"
+            class="block mb-2 text-sm font-medium text-gray-900 "
+          >
+            Your password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={cred.password}
+            onChange={onChange}
+            placeholder="Password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="inline-flex items-center py-2 px-4 mt-4 md:mt-0 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  text-center mr-2 mb-2"
+        >
+          Submit
+        </button>
+      </form>
+    </>
   );
 };
 
