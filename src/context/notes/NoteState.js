@@ -1,6 +1,6 @@
 // import React from "react";
 import noteContext from "./noteContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export const NoteState = (props) => {
   const host = "http://localhost:5000";
   // const s1={
@@ -56,18 +56,25 @@ export const NoteState = (props) => {
   };
   //delete a note
   const deleteNote = async(id) => {
+    
     // console.log("Deleting the note with id"+id);
-    const respose = await fetch(
-      `${host}/api/notes/deletenote/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token":
-            localStorage.getItem('token'),
-        },
-      }
-    );
+    // const array = ids.split(',');
+    // for(i =0;i<array.length;i++){
+    //   let id = array[i];
+        const respose = await fetch(
+          `${host}/api/notes/deletenote/${id}`,
+
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              "auth-token":
+              localStorage.getItem('token'),
+            },
+          }
+          )
+        // }
+    ;
    respose.json();
     // setNotes(json)
     // console.log(json)

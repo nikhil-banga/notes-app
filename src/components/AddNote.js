@@ -26,10 +26,10 @@ const AddNote = (props) => {
     <>
       <form className="container mx-auto ">
         <p className="text-3xl font-semibold mb-4">Add Notes</p>
-        <div class="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="email"
-            class="block mb-2 text-sm font-medium text-gray-900 "
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Heading
           </label>
@@ -42,14 +42,14 @@ const AddNote = (props) => {
             onChange={onChange}
             minLength={5}
             required
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="heading"
           />
         </div>
-        <div class="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="email"
-            class="block mb-2 text-sm font-medium text-gray-900 "
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Description
           </label>
@@ -61,14 +61,14 @@ const AddNote = (props) => {
             onChange={onChange}
             minLength={5}
             required
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="description"
           />
         </div>
-        <div class="mb-6">
+        <div className="mb-6">
           <label
             htmlFor="email"
-            class="block mb-2 text-sm font-medium text-gray-900 "
+            className="block mb-2 text-sm font-medium text-gray-900 "
           >
             Tag
           </label>
@@ -78,7 +78,7 @@ const AddNote = (props) => {
             id="tag"
             name="tag"
             onChange={onChange}
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="tag"
           />
         </div>
@@ -87,7 +87,7 @@ const AddNote = (props) => {
           disabled={note.title.length < 5 || note.description.length < 5}
           type="submit"
           onClick={handleClick}
-          class="inline-flex items-center py-2 px-4 mt-4 md:mt-0 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  text-center mr-2 mb-2"
+          className="inline-flex items-center py-2 px-4 mt-4 md:mt-0 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm  text-center mr-2 mb-2"
         >
           Add Note  
         </button>

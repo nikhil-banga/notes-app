@@ -12,11 +12,9 @@ export const Notes = (props) => {
     useEffect(() => {
         if(!localStorage.getItem('token')){
             nav("/login")
-
         }
         else{
             getNotes()
-
         }
         // eslint-disable-next-line
     }, [])
